@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: smart-oa-minimal
+
+logging:
+  level:
+    com.smartoa: DEBUG
+    org.springframework.security: DEBUG 

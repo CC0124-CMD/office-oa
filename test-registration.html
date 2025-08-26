@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart OA 系统注册功能测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .test-cases {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .test-cases h3 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+        .test-cases ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Smart OA 系统注册功能测试</h1>
+        
+        <div class="test-section">
+            <h2>📝 用户注册测试</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="username">用户名:</label>
+                    <input type="text" id="username" name="username" placeholder="至少3个字符，字母数字下划线" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码:</label>
+                    <input type="password" id="password" name="password" placeholder="至少6个字符" required>
+                </div>
+                <div class="form-group">
+                    <label for="realName">真实姓名:</label>
+                    <input type="text" id="realName" name="realName" placeholder="请输入真实姓名" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱:</label>
+                    <input type="email" id="email" name="email" placeholder="请输入有效邮箱" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">手机号:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="11位手机号" required>
+                </div>
+                <button type="submit">🚀 注册用户</button>
+                <button type="button" onclick="testLogin()">🔑 测试登录</button>
+                <button type="button" onclick="clearForm()">🗑️ 清空表单</button>
+            </form>
+            <div id="registerResult"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 快速测试</h2>
+            <button onclick="testValidRegistration()">✅ 测试有效注册</button>
+            <button onclick="testInvalidUsername()">❌ 测试无效用户名</button>
+            <button onclick="testInvalidPassword()">❌ 测试无效密码</button>
+            <button onclick="testInvalidEmail()">❌ 测试无效邮箱</button>
+            <button onclick="testInvalidPhone()">❌ 测试无效手机号</button>
+            <button onclick="testDuplicateUsername()">⚠️ 测试重复用户名</button>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 测试结果</h2>
+            <div id="testResults"></div>
+        </div>
+
+        <div class="test-cases">
+            <h3>🧪 测试用例说明</h3>
+            <ul>
+                <li><strong>有效注册</strong>: 使用符合规范的注册信息</li>
+                <li><strong>无效用户名</strong>: 少于3个字符或包含特殊字符</li>
+                <li><strong>无效密码</strong>: 少于6个字符</li>
+                <li><strong>无效邮箱</strong>: 不符合邮箱格式</li>
+                <li><strong>无效手机号</strong>: 不是11位数字</li>
+                <li><strong>重复用户名</strong>: 使用已存在的用户名</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let testResults = [];
+
+        // 注册表单提交
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            await performRegistration();
+        });
+
+        // 执行注册
+        async function performRegistration() {
+            const formData = {
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value,
+                realName: document.getElementById('realName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value
+            };
+
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    showResult('registerResult', `✅ 注册成功！\n用户ID: ${result.data?.id || 'N/A'}\n消息: ${result.message}`, 'success');
+                    addTestResult('注册测试', '成功', formData.username, result.message);
+                } else {
+                    showResult('registerResult', `❌ 注册失败\n错误信息: ${result.message}`, 'error');
+                    addTestResult('注册测试', '失败', formData.username, result.message);
+                }
+            } catch (error) {
+                const errorMsg = error.message.includes('fetch') ? 
+                    '无法连接到后端服务，请检查服务是否启动' : 
+                    `请求错误: ${error.message}`;
+                showResult('registerResult', `❌ 连接错误\n${errorMsg}`, 'error');
+                addTestResult('注册测试', '连接错误', formData.username, errorMsg);
+            }
+        }
+
+        // 测试登录
+        async function testLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                showResult('registerResult', '⚠️ 请先填写用户名和密码', 'info');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    showResult('registerResult', `🔑 登录测试成功！\n用户名: ${result.data.user.username}\n角色: ${result.data.user.roles?.join(', ') || 'N/A'}`, 'success');
+                } else {
+                    showResult('registerResult', `🔑 登录测试失败\n错误信息: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                showResult('registerResult', `🔑 登录测试连接错误\n${error.message}`, 'error');
+            }
+        }
+
+        // 清空表单
+        function clearForm() {
+            document.getElementById('registerForm').reset();
+            document.getElementById('registerResult').innerHTML = '';
+        }
+
+        // 显示结果
+        function showResult(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.className = `result ${type}`;
+            element.textContent = message;
+        }
+
+        // 添加测试结果
+        function addTestResult(testName, status, username, message) {
+            const timestamp = new Date().toLocaleTimeString();
+            testResults.push({
+                timestamp,
+                testName,
+                status,
+                username,
+                message
+            });
+            updateTestResults();
+        }
+
+        // 更新测试结果
+        function updateTestResults() {
+            const element = document.getElementById('testResults');
+            let html = '<table style="width:100%; border-collapse: collapse;">';
+            html += '<tr style="background-color: #f0f0f0;"><th>时间</th><th>测试</th><th>状态</th><th>用户名</th><th>结果</th></tr>';
+            
+            testResults.slice(-10).reverse().forEach(result => {
+                const statusColor = result.status === '成功' ? '#d4edda' : 
+                                  result.status === '失败' ? '#f8d7da' : '#fff3cd';
+                html += `<tr style="background-color: ${statusColor};">`;
+                html += `<td>${result.timestamp}</td>`;
+                html += `<td>${result.testName}</td>`;
+                html += `<td>${result.status}</td>`;
+                html += `<td>${result.username}</td>`;
+                html += `<td>${result.message}</td>`;
+                html += '</tr>';
+            });
+            html += '</table>';
+            element.innerHTML = html;
+        }
+
+        // 测试用例函数
+        function testValidRegistration() {
+            document.getElementById('username').value = 'testuser' + Date.now();
+            document.getElementById('password').value = '123456';
+            document.getElementById('realName').value = '测试用户';
+            document.getElementById('email').value = 'test@example.com';
+            document.getElementById('phone').value = '13800138000';
+            performRegistration();
+        }
+
+        function testInvalidUsername() {
+            document.getElementById('username').value = 'ab';
+            document.getElementById('password').value = '123456';
+            document.getElementById('realName').value = '测试用户';
+            document.getElementById('email').value = 'test@example.com';
+            document.getElementById('phone').value = '13800138000';
+            performRegistration();
+        }
+
+        function testInvalidPassword() {
+            document.getElementById('username').value = 'testuser' + Date.now();
+            document.getElementById('password').value = '123';
+            document.getElementById('realName').value = '测试用户';
+            document.getElementById('email').value = 'test@example.com';
+            document.getElementById('phone').value = '13800138000';
+            performRegistration();
+        }
+
+        function testInvalidEmail() {
+            document.getElementById('username').value = 'testuser' + Date.now();
+            document.getElementById('password').value = '123456';
+            document.getElementById('realName').value = '测试用户';
+            document.getElementById('email').value = 'invalid-email';
+            document.getElementById('phone').value = '13800138000';
+            performRegistration();
+        }
+
+        function testInvalidPhone() {
+            document.getElementById('username').value = 'testuser' + Date.now();
+            document.getElementById('password').value = '123456';
+            document.getElementById('realName').value = '测试用户';
+            document.getElementById('email').value = 'test@example.com';
+            document.getElementById('phone').value = '123';
+            performRegistration();
+        }
+
+        function testDuplicateUsername() {
+            document.getElementById('username').value = 'admin';
+            document.getElementById('password').value = '123456';
+            document.getElementById('realName').value = '测试用户';
+            document.getElementById('email').value = 'test@example.com';
+            document.getElementById('phone').value = '13800138000';
+            performRegistration();
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,600 @@
+2025-08-11 00:40:10 [main] INFO  com.smartoa.SmartOaApplication - Starting SmartOaApplication v1.0.0 using Java 17.0.12 with PID 6076 (D:\smart-oa-system\backend\target\smart-oa-system-1.0.0.jar started by 25427 in D:\smart-oa-system\backend)
+2025-08-11 00:40:10 [main] DEBUG com.smartoa.SmartOaApplication - Running with Spring Boot v3.1.12, Spring v6.0.21
+2025-08-11 00:40:10 [main] INFO  com.smartoa.SmartOaApplication - The following 1 profile is active: "dev"
+2025-08-11 00:40:11 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-11 00:40:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 118 ms. Found 9 JPA repository interfaces.
+2025-08-11 00:40:12 [main] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.smartoa]' package. Please check your configuration.
+2025-08-11 00:40:13 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-08-11 00:40:13 [main] INFO  o.a.c.core.AprLifecycleListener - An older version [1.3.1] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [2.0.5]
+2025-08-11 00:40:13 [main] INFO  o.a.c.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.3.1] using APR version [1.7.4].
+2025-08-11 00:40:13 [main] INFO  o.a.c.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+2025-08-11 00:40:13 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-11 00:40:13 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2025-08-11 00:40:13 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-11 00:40:13 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3338 ms
+2025-08-11 00:40:14 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-11 00:40:14 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.25.Final
+2025-08-11 00:40:14 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2025-08-11 00:40:15 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-11 00:40:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - SmartOAHikariCP - Starting...
+2025-08-11 00:40:15 [main] INFO  com.zaxxer.hikari.pool.HikariPool - SmartOAHikariCP - Added connection com.mysql.cj.jdbc.ConnectionImpl@49a71302
+2025-08-11 00:40:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - SmartOAHikariCP - Start completed.
+2025-08-11 00:40:15 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-11 00:40:15 [main] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-11 00:40:17 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-11 00:40:17 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-11 00:40:17 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-11 00:40:18 [main] DEBUG c.s.security.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-08-11 00:40:19 [main] INFO  c.smartoa.controller.AuthController - AuthController 初始化完成，登录失败限制功能已禁用（无Redis）
+2025-08-11 00:40:19 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-11 00:40:19 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@d65e744, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@44de3b46, org.springframework.security.web.context.SecurityContextHolderFilter@2d3eb1ea, org.springframework.security.web.header.HeaderWriterFilter@dd07be8, org.springframework.web.filter.CorsFilter@1a85e86e, org.springframework.security.web.authentication.logout.LogoutFilter@7c8b37a8, com.smartoa.security.JwtAuthenticationFilter@6487f7f8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1bde9a22, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2cc97e47, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@320fc4b0, org.springframework.security.web.session.SessionManagementFilter@44f23927, org.springframework.security.web.access.ExceptionTranslationFilter@5c9e6d95, org.springframework.security.web.access.intercept.AuthorizationFilter@1c4aa701]
+2025-08-11 00:40:20 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-08-11 00:40:20 [main] INFO  com.smartoa.SmartOaApplication - Started SmartOaApplication in 10.839 seconds (process running for 11.673)
+2025-08-11 00:40:20 [main] INFO  com.smartoa.config.DataInitializer - 开始初始化系统数据...
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        count(*) 
+    from
+        Permission x */ select
+            count(*) 
+        from
+            permissions p1_0
+2025-08-11 00:40:20 [main] INFO  com.smartoa.config.DataInitializer - 初始化权限数据...
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Permission */insert 
+    into
+        permissions (action,created_at,description,parent_id,permission_code,permission_name,resource,sort_order,status,updated_at) 
+    values
+        (?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:20 [main] INFO  com.smartoa.config.DataInitializer - 权限数据初始化完成，共 31 条
+2025-08-11 00:40:20 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        count(*) 
+    from
+        Role x */ select
+            count(*) 
+        from
+            roles r1_0
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - 初始化角色数据...
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Role */insert 
+    into
+        roles (created_at,created_by,description,permissions,role_code,role_name,status,updated_at,updated_by) 
+    values
+        (?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Role */insert 
+    into
+        roles (created_at,created_by,description,permissions,role_code,role_name,status,updated_at,updated_by) 
+    values
+        (?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.Role */insert 
+    into
+        roles (created_at,created_by,description,permissions,role_code,role_name,status,updated_at,updated_by) 
+    values
+        (?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - 角色数据初始化完成，共 3 条
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.avatar,
+        u1_0.create_time,
+        u1_0.dept_id,
+        u1_0.dept_name,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.real_name,
+        u1_0.status,
+        u1_0.update_time,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - 初始化管理员用户...
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.User */insert 
+    into
+        users (avatar,create_time,dept_id,dept_name,email,password,phone,real_name,status,update_time,username) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        r1_0.id,
+        r1_0.created_at,
+        r1_0.created_by,
+        r1_0.description,
+        r1_0.permissions,
+        r1_0.role_code,
+        r1_0.role_name,
+        r1_0.status,
+        r1_0.updated_at,
+        r1_0.updated_by 
+    from
+        roles r1_0 
+    where
+        r1_0.role_code=?
+2025-08-11 00:40:21 [main] INFO  c.s.service.impl.RoleServiceImpl - 为用户 1 分配角色 1
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        COUNT(ur) > 0 
+    FROM
+        UserRole ur 
+    WHERE
+        ur.userId = :userId 
+        AND ur.roleId = :roleId 
+        AND ur.status = 1 */ select
+            count(u1_0.id)>0 
+        from
+            user_roles u1_0 
+        where
+            u1_0.user_id=? 
+            and u1_0.role_id=? 
+            and u1_0.status=1
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.UserRole */insert 
+    into
+        user_roles (assigned_at,assigned_by,role_id,status,user_id) 
+    values
+        (?,?,?,?,?)
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - 为管理员用户分配系统管理员角色
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - 管理员用户初始化完成: admin/admin123
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - 初始化测试用户数据...
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        u1_0.id,
+        u1_0.avatar,
+        u1_0.create_time,
+        u1_0.dept_id,
+        u1_0.dept_name,
+        u1_0.email,
+        u1_0.password,
+        u1_0.phone,
+        u1_0.real_name,
+        u1_0.status,
+        u1_0.update_time,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        r1_0.id,
+        r1_0.created_at,
+        r1_0.created_by,
+        r1_0.description,
+        r1_0.permissions,
+        r1_0.role_code,
+        r1_0.role_name,
+        r1_0.status,
+        r1_0.updated_at,
+        r1_0.updated_by 
+    from
+        roles r1_0 
+    where
+        r1_0.role_code=?
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* <criteria> */ select
+        r1_0.id,
+        r1_0.created_at,
+        r1_0.created_by,
+        r1_0.description,
+        r1_0.permissions,
+        r1_0.role_code,
+        r1_0.role_name,
+        r1_0.status,
+        r1_0.updated_at,
+        r1_0.updated_by 
+    from
+        roles r1_0 
+    where
+        r1_0.role_code=?
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.User */insert 
+    into
+        users (avatar,create_time,dept_id,dept_name,email,password,phone,real_name,status,update_time,username) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] INFO  c.s.service.impl.RoleServiceImpl - 为用户 2 分配角色 2
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        COUNT(ur) > 0 
+    FROM
+        UserRole ur 
+    WHERE
+        ur.userId = :userId 
+        AND ur.roleId = :roleId 
+        AND ur.status = 1 */ select
+            count(u1_0.id)>0 
+        from
+            user_roles u1_0 
+        where
+            u1_0.user_id=? 
+            and u1_0.role_id=? 
+            and u1_0.status=1
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.UserRole */insert 
+    into
+        user_roles (assigned_at,assigned_by,role_id,status,user_id) 
+    values
+        (?,?,?,?,?)
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.User */insert 
+    into
+        users (avatar,create_time,dept_id,dept_name,email,password,phone,real_name,status,update_time,username) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] INFO  c.s.service.impl.RoleServiceImpl - 为用户 3 分配角色 3
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        COUNT(ur) > 0 
+    FROM
+        UserRole ur 
+    WHERE
+        ur.userId = :userId 
+        AND ur.roleId = :roleId 
+        AND ur.status = 1 */ select
+            count(u1_0.id)>0 
+        from
+            user_roles u1_0 
+        where
+            u1_0.user_id=? 
+            and u1_0.role_id=? 
+            and u1_0.status=1
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.UserRole */insert 
+    into
+        user_roles (assigned_at,assigned_by,role_id,status,user_id) 
+    values
+        (?,?,?,?,?)
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.User */insert 
+    into
+        users (avatar,create_time,dept_id,dept_name,email,password,phone,real_name,status,update_time,username) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] INFO  c.s.service.impl.RoleServiceImpl - 为用户 4 分配角色 3
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        COUNT(ur) > 0 
+    FROM
+        UserRole ur 
+    WHERE
+        ur.userId = :userId 
+        AND ur.roleId = :roleId 
+        AND ur.status = 1 */ select
+            count(u1_0.id)>0 
+        from
+            user_roles u1_0 
+        where
+            u1_0.user_id=? 
+            and u1_0.role_id=? 
+            and u1_0.status=1
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.UserRole */insert 
+    into
+        user_roles (assigned_at,assigned_by,role_id,status,user_id) 
+    values
+        (?,?,?,?,?)
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.User */insert 
+    into
+        users (avatar,create_time,dept_id,dept_name,email,password,phone,real_name,status,update_time,username) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] INFO  c.s.service.impl.RoleServiceImpl - 为用户 5 分配角色 3
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        COUNT(ur) > 0 
+    FROM
+        UserRole ur 
+    WHERE
+        ur.userId = :userId 
+        AND ur.roleId = :roleId 
+        AND ur.status = 1 */ select
+            count(u1_0.id)>0 
+        from
+            user_roles u1_0 
+        where
+            u1_0.user_id=? 
+            and u1_0.role_id=? 
+            and u1_0.status=1
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.UserRole */insert 
+    into
+        user_roles (assigned_at,assigned_by,role_id,status,user_id) 
+    values
+        (?,?,?,?,?)
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.User */insert 
+    into
+        users (avatar,create_time,dept_id,dept_name,email,password,phone,real_name,status,update_time,username) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] INFO  c.s.service.impl.RoleServiceImpl - 为用户 6 分配角色 3
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        COUNT(ur) > 0 
+    FROM
+        UserRole ur 
+    WHERE
+        ur.userId = :userId 
+        AND ur.roleId = :roleId 
+        AND ur.status = 1 */ select
+            count(u1_0.id)>0 
+        from
+            user_roles u1_0 
+        where
+            u1_0.user_id=? 
+            and u1_0.role_id=? 
+            and u1_0.status=1
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.UserRole */insert 
+    into
+        user_roles (assigned_at,assigned_by,role_id,status,user_id) 
+    values
+        (?,?,?,?,?)
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.User */insert 
+    into
+        users (avatar,create_time,dept_id,dept_name,email,password,phone,real_name,status,update_time,username) 
+    values
+        (?,?,?,?,?,?,?,?,?,?,?)
+2025-08-11 00:40:21 [main] INFO  c.s.service.impl.RoleServiceImpl - 为用户 7 分配角色 3
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        COUNT(ur) > 0 
+    FROM
+        UserRole ur 
+    WHERE
+        ur.userId = :userId 
+        AND ur.roleId = :roleId 
+        AND ur.status = 1 */ select
+            count(u1_0.id)>0 
+        from
+            user_roles u1_0 
+        where
+            u1_0.user_id=? 
+            and u1_0.role_id=? 
+            and u1_0.status=1
+2025-08-11 00:40:21 [main] DEBUG org.hibernate.SQL - 
+    /* insert for
+        com.smartoa.entity.UserRole */insert 
+    into
+        user_roles (assigned_at,assigned_by,role_id,status,user_id) 
+    values
+        (?,?,?,?,?)
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - 测试用户初始化完成:
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - - 部门主管: manager/manager123
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - - 普通员工: employee1-5/123456
+2025-08-11 00:40:21 [main] INFO  com.smartoa.config.DataInitializer - 系统数据初始化完成

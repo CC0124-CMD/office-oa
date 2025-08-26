@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能OA系统</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <script src="https://unpkg.com/element-plus/dist/index.full.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .app-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .login-form {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-header h1 {
+            color: #667eea;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .dashboard-container {
+            padding: 20px;
+        }
+        
+        .dashboard-header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .dashboard-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .card-desc {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="app-container">
+            <!-- 登录页面 -->
+            <div v-if="!isLoggedIn" class="login-container">
+                <div class="login-form">
+                    <div class="login-header">
+                        <h1>智能OA系统</h1>
+                        <p>基于Java EE的智能办公自动化系统</p>
+                    </div>
+                    
+                    <el-form :model="loginForm" :rules="loginRules" ref="loginFormRef">
+                        <el-form-item prop="username">
+                            <el-input 
+                                v-model="loginForm.username" 
+                                placeholder="请输入用户名"
+                                prefix-icon="User"
+                                size="large">
+                            </el-input>
+                        </el-form-item>
+                        
+                        <el-form-item prop="password">
+                            <el-input 
+                                v-model="loginForm.password" 
+                                type="password" 
+                                placeholder="请输入密码"
+                                prefix-icon="Lock"
+                                size="large"
+                                show-password>
+                            </el-input>
+                        </el-form-item>
+                        
+                        <el-form-item>
+                            <el-button 
+                                type="primary" 
+                                @click="handleLogin" 
+                                :loading="loginLoading"
+                                size="large" 
+                                style="width: 100%;">
+                                登录
+                            </el-button>
+                        </el-form-item>
+                    </el-form>
+                    
+                    <div style="text-align: center; margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <p style="color: #666; margin-bottom: 10px;">演示账号</p>
+                        <p style="font-family: monospace; color: #333;">admin / 123456</p>
+                        <p style="font-family: monospace; color: #333;">zhangsan / 123456</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 主页面 -->
+            <div v-else>
+                <div class="dashboard-container">
+                    <div class="dashboard-header">
+                        <el-row justify="space-between" align="middle">
+                            <el-col :span="12">
+                                <h2 style="color: #333;">欢迎使用智能OA系统</h2>
+                                <p style="color: #666; margin-top: 5px;">当前用户: {{ currentUser.username }}</p>
+                            </el-col>
+                            <el-col :span="12" style="text-align: right;">
+                                <el-button @click="handleLogout" type="danger">退出登录</el-button>
+                            </el-col>
+                        </el-row>
+                    </div>
+                    
+                    <div class="dashboard-cards">
+                        <div class="dashboard-card">
+                            <div class="card-icon">👥</div>
+                            <div class="card-title">用户管理</div>
+                            <div class="card-desc">管理系统用户和权限</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-icon">📋</div>
+                            <div class="card-title">审批流程</div>
+                            <div class="card-desc">处理各类审批申请</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-icon">⏰</div>
+                            <div class="card-title">考勤管理</div>
+                            <div class="card-desc">查看考勤记录和统计</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-icon">📢</div>
+                            <div class="card-title">公告通知</div>
+                            <div class="card-desc">发布和查看公告信息</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-icon">📁</div>
+                            <div class="card-title">文件管理</div>
+                            <div class="card-desc">上传下载和管理文件</div>
+                        </div>
+                        
+                        <div class="dashboard-card">
+                            <div class="card-icon">📊</div>
+                            <div class="card-title">数据统计</div>
+                            <div class="card-desc">查看系统运行数据</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        const { ElMessage } = ElementPlus;
+
+        createApp({
+            data() {
+                return {
+                    isLoggedIn: false,
+                    loginLoading: false,
+                    currentUser: {},
+                    loginForm: {
+                        username: '',
+                        password: ''
+                    },
+                    loginRules: {
+                        username: [
+                            { required: true, message: '请输入用户名', trigger: 'blur' }
+                        ],
+                        password: [
+                            { required: true, message: '请输入密码', trigger: 'blur' }
+                        ]
+                    }
+                }
+            },
+            methods: {
+                async handleLogin() {
+                    this.$refs.loginFormRef.validate(async (valid) => {
+                        if (valid) {
+                            this.loginLoading = true;
+                            
+                            // 模拟登录请求
+                            setTimeout(() => {
+                                if (this.loginForm.username === 'admin' && this.loginForm.password === '123456') {
+                                    this.currentUser = {
+                                        username: 'admin',
+                                        role: '管理员'
+                                    };
+                                    this.isLoggedIn = true;
+                                    ElMessage.success('登录成功！');
+                                } else if (this.loginForm.username === 'zhangsan' && this.loginForm.password === '123456') {
+                                    this.currentUser = {
+                                        username: 'zhangsan',
+                                        role: '普通用户'
+                                    };
+                                    this.isLoggedIn = true;
+                                    ElMessage.success('登录成功！');
+                                } else {
+                                    ElMessage.error('用户名或密码错误！');
+                                }
+                                this.loginLoading = false;
+                            }, 1000);
+                        }
+                    });
+                },
+                
+                handleLogout() {
+                    this.isLoggedIn = false;
+                    this.currentUser = {};
+                    this.loginForm = {
+                        username: '',
+                        password: ''
+                    };
+                    ElMessage.success('已退出登录');
+                }
+            }
+        }).use(ElementPlus).mount('#app');
+    </script>
+</body>
+</html> 

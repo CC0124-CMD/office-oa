@@ -1,0 +1,147 @@
+# Smart OA 系统配置文件
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: smart-oa-backend
+  
+  # 数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/smart_oa?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    
+    # 连接池配置
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: SmartOAHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+  # JPA配置
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        use_sql_comments: true
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+        
+  # Redis配置（可选）
+  redis:
+    host: localhost
+    port: 6379
+    password: 
+    timeout: 3000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+# JWT配置
+app:
+  jwt:
+    secret: smartOASecretKeyForJWTTokenGeneration2025
+    expiration: 86400000 # 24小时（毫秒）
+
+# 日志配置
+logging:
+  level:
+    com.smartoa: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/smart-oa.log
+    max-size: 10MB
+    max-history: 30
+
+# 管理端点配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# 自定义配置
+smartoa:
+  # 系统配置
+  system:
+    name: Smart OA 智能办公系统
+    version: 2.0.0
+    description: 基于Spring Boot + Vue的智能办公自动化系统
+    
+  # 安全配置
+  security:
+    # 忽略认证的URL
+    ignore-urls:
+      - /api/auth/**
+      - /api/public/**
+      - /swagger-ui/**
+      - /v3/api-docs/**
+      - /actuator/health
+      - /favicon.ico
+      - /error
+    
+    # 密码策略
+    password:
+      min-length: 6
+      max-length: 20
+      require-uppercase: false
+      require-lowercase: false
+      require-digit: true
+      require-special: false
+      
+  # 文件存储配置
+  file:
+    upload-path: ./uploads/
+    allowed-types: jpg,jpeg,png,gif,pdf,doc,docx,xls,xlsx,ppt,pptx,txt,zip,rar
+    max-size: 10MB
+    
+  # 邮件配置
+  mail:
+    enabled: false
+    host: smtp.qq.com
+    port: 587
+    username: 
+    password: 
+    from: 
+    
+  # 短信配置
+  sms:
+    enabled: false
+    provider: aliyun
+    access-key: 
+    secret-key: 
+    sign-name: 
+    template-code:

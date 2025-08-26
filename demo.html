@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能OA系统 - 演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .feature-card p {
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .status {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .status h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .status-item {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-radius: 25px;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .login-form {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .login-form h3 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .demo-credentials {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .demo-credentials h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .credential {
+            background: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>智能OA系统</h1>
+            <p>基于Java EE技术栈的智能办公自动化系统</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h3>👥 用户管理</h3>
+                <p>支持用户登录、角色分配（管理员、普通员工）、权限控制等功能，确保系统安全可靠。</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📋 审批流程</h3>
+                <p>集成Activiti工作流引擎，支持动态表单和灵活的审批流程配置，满足各种业务需求。</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>⏰ 考勤管理</h3>
+                <p>提供打卡记录、异常处理、考勤统计等功能，帮助企业规范考勤管理。</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📢 公告通知</h3>
+                <p>支持富文本编辑、消息推送、实时通知等功能，提升信息传达效率。</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>📁 文件管理</h3>
+                <p>提供文件上传下载、权限控制、版本管理等功能，确保文件安全存储。</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🚀 技术架构</h3>
+                <p>采用Spring Boot + Vue.js + MySQL技术栈，支持Docker容器化部署，具备良好的扩展性。</p>
+            </div>
+        </div>
+        
+        <div class="status">
+            <h2>系统状态</h2>
+            <div class="status-item">✅ 项目结构已创建</div>
+            <div class="status-item">✅ 技术栈已配置</div>
+            <div class="status-item">✅ 数据库设计完成</div>
+            <div class="status-item">✅ 核心功能已实现</div>
+            <div class="status-item">✅ 系统已启动</div>
+        </div>
+        
+        <div class="login-form">
+            <h3>系统登录</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" name="username" placeholder="请输入用户名">
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码">
+                </div>
+                <button type="submit" class="btn">登录</button>
+            </form>
+            
+            <div class="demo-credentials">
+                <h4>演示账号</h4>
+                <div class="credential">管理员: admin / 123456</div>
+                <div class="credential">普通用户: zhangsan / 123456</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username && password) {
+                alert('登录功能演示：\n用户名: ' + username + '\n密码: ' + password + '\n\n系统已成功启动！');
+            } else {
+                alert('请输入用户名和密码');
+            }
+        });
+    </script>
+</body>
+</html> 
