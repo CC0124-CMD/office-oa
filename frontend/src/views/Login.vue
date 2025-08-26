@@ -463,7 +463,11 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      checkBackendStatus()
+      if (process.env.NODE_ENV !== 'production') {
+        checkBackendStatus()
+      } else {
+        backendStatus.value = null
+      }
     })
 
     return {
