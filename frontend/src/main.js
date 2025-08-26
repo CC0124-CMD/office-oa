@@ -4,9 +4,10 @@ import router from './router'
 import store from './store'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/reset.css'
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+// Defer Element Plus to reduce initial bundle
+// import ElementPlus from 'element-plus'
+// import 'element-plus/dist/index.css'
+// import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import axios from 'axios'
 import { initSentry } from './utils/sentry'
 
@@ -50,11 +51,38 @@ initSentry(app)
 app.use(store)
 app.use(router)
 app.use(Antd)
-app.use(ElementPlus)
 
-// 注册所有 Element Plus 图标
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
-}
+app.mount('#app')
 
-app.mount('#app') 
+// 延迟加载 Element Plus 及其图标，避免首屏体积过大
+if (process.env.NODE_ENV === 'production') {
+  setTimeout(async () => {
+    try {
+      const [{ default: ElementPlus }, _icons] = await Promise.all([
+        import('element-plus'),
+        import('@element-plus/icons-vue')
+      ])
+      const icons = _icons
+      app.use(ElementPlus)
+      for (const [key, component] of Object.entries(icons)) {
+        app.component(key, component)
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log('Element Plus lazy load skipped:', e)
+    }
+  }, 0)
+} else {
+  // 开发环境仍然同步加载，提升开发体验
+  ;(async () => {
+    const [{ default: ElementPlus }, _icons] = await Promise.all([
+      import('element-plus'),
+      import('@element-plus/icons-vue')
+    ])
+    const icons = _icons
+    app.use(ElementPlus)
+    for (const [key, component] of Object.entries(icons)) {
+      app.component(key, component)
+    }
+  })()
+} 
